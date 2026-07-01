@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data | Smart Network Center</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+.data-container{
+    width:90%;
+    max-width:1200px;
+    margin:50px auto;
+}
+
+.chart-box{
+    background:#f8f8f8;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.chart-box h2{
+    color:#8e1358;
+    margin-bottom:20px;
+}
+
+canvas{
+    width:100% !important;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo">
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="data.html" class="active">Feedback</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<section class="page-header">
+    <h1>Feedback</h1>
+</section>
+
+<section class="data-container">
+
+    <div class="chart-box">
+        <h2>WiFi Speed by Area</h2>
+        <canvas id="wifiChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <h2>Student Satisfaction</h2>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-left">
+        © 2026 Smart Network Center
+    </div>
+
+
+</footer>
+
+<script>
+
+// HORIZONTAL BAR CHART
+
+new Chart(document.getElementById('wifiChart'), {
+
+    type: 'bar',
+
+    data: {
+        labels: [
+            'Hostel',
+            'Cafeteria',
+            'Cafeteria',
+            'Hostel',
+            'Hostel',
+            'Hostel',
+            'Classroom',
+            'Hostel',
+            'Classroom',
+            'Hostel'
+        ],
+
+        datasets: [{
+            label: 'WiFi Speed',
+            data: [2,10,5,2,2,10,2,2,10,2]
+        }]
+    },
+
+    options: {
+
+        indexAxis: 'y',
+
+        responsive:true,
+
+        animation:{
+            duration:2500
+        },
+
+        scales:{
+            x:{
+                beginAtZero:true,
+                max:10
+            }
+        }
+    }
+});
+
+
+// PIE CHART
+
+new Chart(document.getElementById('pieChart'), {
+
+    type: 'pie',
+
+    data: {
+        labels: [
+            'Neutral (46.7%)',
+            'Satisfied (20%)',
+            'Unsatisfied (13.3%)',
+            'Very Unsatisfied (20%)'
+        ],
+
+        datasets: [{
+            data: [46.7, 20, 13.3, 20]
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        plugins: {
+            title: {
+                display: true,
+                text: 'Student Satisfaction (%)'
+            },
+
+            legend: {
+                position: 'bottom'
+            }
+        },
+
+        animation: {
+            animateRotate: true,
+            duration: 2500
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
